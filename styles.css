@@ -33,3 +33,13 @@ a{color:inherit}.skip-link{position:fixed;left:16px;top:-80px;z-index:1000;paddi
 @media(max-width:560px){.saved-journey-actions>div{display:grid}.saved-journey-actions .button{width:100%}}
 .enemy-actor{right:3%;bottom:22px;width:clamp(165px,30%,230px)}
 @media(max-width:560px){.enemy-actor{right:0;bottom:22px;width:155px}}
+
+.line-consult{max-width:900px;margin:45px auto 0;padding:clamp(25px,4vw,38px);border:1px solid rgba(142,217,178,.32);border-radius:23px;background:linear-gradient(135deg,rgba(42,105,72,.2),rgba(58,30,88,.35));box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.line-consult h2{margin:5px 0 11px;font-size:clamp(1.45rem,3vw,2.2rem)}
+.line-consult>p:not(.eyebrow){max-width:650px;margin:0 auto;color:#d0c7da;font-size:.88rem;line-height:1.9}
+.line-consult-actions{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:22px}
+.button-line{min-height:54px;padding:0 25px;color:#07140c;background:linear-gradient(135deg,#9be3b9,#62c98b);box-shadow:0 10px 28px rgba(55,177,106,.24)}
+.button-line:hover{box-shadow:0 13px 33px rgba(55,177,106,.34)}
+.hp-sub-link{color:#b9aec8;font-size:.75rem;text-underline-offset:4px}
+.hp-sub-link:hover{color:var(--ink)}
+@media(max-width:560px){.line-consult-actions{display:grid;gap:14px}.line-consult-actions .button{width:100%}}

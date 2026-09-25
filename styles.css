@@ -17,5 +17,19 @@ a{color:inherit}.skip-link{position:fixed;left:16px;top:-80px;z-index:1000;paddi
 @media(max-width:560px){.quest-visual{height:210px;margin-bottom:23px}.quest-visual figcaption{left:12px;right:12px}.enemy-actor{right:2%;bottom:23px;width:132px}.gallery-grid{grid-template-columns:repeat(2,1fr)}.gallery-grid figure{height:160px}}
 @keyframes enemyFloat{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-10px) rotate(1.5deg)}}@keyframes enemyBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}@keyframes enemyAura{0%,100%{transform:scale(.9);opacity:.7}50%{transform:scale(1.08);opacity:1}}@keyframes shadowPulse{0%,100%{transform:scaleX(1);opacity:.72}50%{transform:scaleX(.82);opacity:.45}}@keyframes enemyWobble{0%,100%{transform:rotate(-2deg) scale(.96)}50%{transform:rotate(2deg) scale(.92)}}@keyframes enemyStartled{0%,100%{transform:translateY(0) scale(1)}35%{transform:translateY(-18px) scale(1.08)}65%{transform:translateY(3px) scale(.96)}}@keyframes enemyDefeat{0%{transform:translateY(0) rotate(0) scale(1);opacity:1}55%{transform:translateY(-18px) rotate(-8deg) scale(.78);opacity:.9}100%{transform:translate(170px,-80px) rotate(28deg) scale(.15);opacity:0}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* Saved-progress controls: make a clean restart unmistakable for shared-device testing. */
+.saved-journey-actions{width:min(100%,580px);padding:16px;border:1px solid rgba(243,188,125,.36);border-radius:18px;background:linear-gradient(135deg,rgba(243,188,125,.1),rgba(198,140,244,.09));box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.saved-journey-actions>p{margin:0 0 13px;line-height:1.55}
+.saved-journey-actions>p strong,.saved-journey-actions>p span{display:block}
+.saved-journey-actions>p strong{color:var(--gold);font-size:.85rem}
+.saved-journey-actions>p span{margin-top:3px;color:var(--muted);font-size:.72rem}
+.saved-journey-actions>div{display:flex;gap:9px;flex-wrap:wrap}
+.button-reset{color:#ffd8e9;border:1px solid rgba(239,145,189,.58);background:rgba(116,39,76,.24);box-shadow:0 8px 22px rgba(46,8,29,.24)}
+.button-reset:hover{border-color:var(--rose);background:rgba(145,45,91,.34)}
+.reset-button{display:flex;width:100%;min-height:42px;align-items:center;justify-content:center;gap:7px;padding:8px 12px;border:1px solid rgba(239,145,189,.35);border-radius:11px;color:#eeb5d0;background:rgba(116,39,76,.14);font:700 .72rem "Noto Sans JP",sans-serif;text-decoration:none;cursor:pointer;transition:.2s ease}
+.reset-button:hover{border-color:var(--rose);background:rgba(145,45,91,.25);transform:translateY(-1px)}
+
+@media(max-width:560px){.saved-journey-actions>div{display:grid}.saved-journey-actions .button{width:100%}}
 .enemy-actor{right:3%;bottom:22px;width:clamp(165px,30%,230px)}
 @media(max-width:560px){.enemy-actor{right:0;bottom:22px;width:155px}}

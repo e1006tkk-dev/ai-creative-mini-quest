@@ -30,7 +30,7 @@
         <h1 id="introTitle">頭の中の世界を、<br><em>最初の1枚</em>へ。</h1>
         <p class="intro-lead">5つの問いに答えると、画像生成AIへそのまま渡せる「あなたの生成文」が完成します。正解はありません。アイリスと一緒に、好きな言葉を拾っていきましょう。</p>
         <ul class="intro-points" aria-label="この体験の特徴"><li><span>01</span>無料・登録不要</li><li><span>02</span>迷ったら候補から選べる</li><li><span>03</span>答えはこの端末に自動保存</li></ul>
-        <div class="intro-actions"><button id="startButton" class="button button-primary button-large" type="button">アイリスと旅を始める <span>→</span></button><button id="resumeButton" class="button button-ghost" type="button" hidden>続きから再開する</button></div>
+        <div class="intro-actions"><button id="startButton" class="button button-primary button-large" type="button">アイリスと旅を始める <span>→</span></button><div id="savedJourneyActions" class="saved-journey-actions" hidden><p><strong>前回の続きが保存されています</strong><span>別の人が体験する場合は、最初から始めてください。</span></p><div><button id="resumeButton" class="button button-primary button-large" type="button">続きから再開する <span>→</span></button><button id="introResetButton" class="button button-reset button-large" type="button"><span>↺</span> 保存データを消して最初から</button></div></div></div>
         <p class="privacy-note">入力した内容は外部へ送信されません。このブラウザ内だけに保存されます。</p>
       </div>
       <figure class="intro-visual"><img src="assets/iris.png" alt="星空の中で手を振って案内するアイリス" width="1736" height="900"><figcaption><span>案内役</span> アイリス</figcaption></figure>
@@ -58,7 +58,7 @@
         <aside class="inventory-panel">
           <div class="inventory-heading"><div><p class="eyebrow">YOUR CREATIVE KIT</p><h2>旅の装備</h2></div><span id="saveStatus" class="save-status"><span></span>自動保存</span></div>
           <p class="inventory-lead">選んだ言葉が、作品の材料としてここに集まります。</p><div id="inventory" class="inventory-list"></div>
-          <div class="inventory-footer"><p>ここまでの答えは、この端末に保存されています。</p><button id="resetButton" class="reset-button" type="button">はじめからやり直す</button></div>
+          <div class="inventory-footer"><p>ここまでの答えは、この端末に保存されています。</p><button id="resetButton" class="reset-button" type="button"><span>↺</span> 保存データを消して最初から</button></div>
         </aside>
       </div>
     </section>

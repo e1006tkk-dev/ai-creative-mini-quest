@@ -3,103 +3,87 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070611">
   <title>AI創作ミニクエスト｜アイリスと30分の冒険</title>
-  <meta name="description" content="案内役のアイリスと5つのクエストを進め、頭の中の世界を1枚の絵にする創作体験。">
+  <meta name="description" content="案内役のアイリスと5つのクエストを進め、頭の中の世界を画像生成AIへ伝えられる一つの生成文にする無料の創作体験。">
+  <meta property="og:title" content="AI創作ミニクエスト｜アイリスと30分の冒険">
+  <meta property="og:description" content="5つのクエストで、頭の中の世界を最初の1枚へ。無料・登録不要。">
+  <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2308071a'/%3E%3Cpath d='M32 8l5.8 18.2L56 32l-18.2 5.8L32 56l-5.8-18.2L8 32l18.2-5.8z' fill='%23d58cff'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23ffd096'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260925">
 </head>
 <body>
-  <div class="ambient ambient-one"></div>
-  <div class="ambient ambient-two"></div>
+  <a class="skip-link" href="#questArea">クエストへ移動</a>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div><div class="starfield" aria-hidden="true"></div>
   <main class="app-shell">
     <header class="topbar">
-      <div class="brand">
-        <span class="brand-mark">✦</span>
-        <div>
-          <p class="eyebrow">30 MIN CREATIVE JOURNEY</p>
-          <h1>AI創作ミニクエスト</h1>
-        </div>
-      </div>
-      <div class="progress-copy"><strong id="progressCount">0 / 5</strong><span>クエスト</span></div>
+      <a class="brand" href="https://irisaiworld.web.fc2.com/" aria-label="アイリス公式サイトへ戻る"><span class="brand-mark">✦</span><span><small>IRIS CREATIVE JOURNEY</small><strong>AI創作ミニクエスト</strong></span></a>
+      <div class="progress-copy" aria-label="現在の進捗"><strong id="progressCount">0 / 5</strong><span>クエスト</span></div>
     </header>
 
-    <section class="progress-map" aria-label="クエストの進捗">
-      <div class="progress-line"><span id="progressFill"></span></div>
-      <div id="mapNodes" class="map-nodes"></div>
+    <section id="introPanel" class="intro-panel" aria-labelledby="introTitle">
+      <div class="intro-copy">
+        <p class="eyebrow">30 MIN CREATIVE JOURNEY</p>
+        <h1 id="introTitle">頭の中の世界を、<br><em>最初の1枚</em>へ。</h1>
+        <p class="intro-lead">5つの問いに答えると、画像生成AIへそのまま渡せる「あなたの生成文」が完成します。正解はありません。アイリスと一緒に、好きな言葉を拾っていきましょう。</p>
+        <ul class="intro-points" aria-label="この体験の特徴"><li><span>01</span>無料・登録不要</li><li><span>02</span>迷ったら候補から選べる</li><li><span>03</span>答えはこの端末に自動保存</li></ul>
+        <div class="intro-actions"><button id="startButton" class="button button-primary button-large" type="button">アイリスと旅を始める <span>→</span></button><button id="resumeButton" class="button button-ghost" type="button" hidden>続きから再開する</button></div>
+        <p class="privacy-note">入力した内容は外部へ送信されません。このブラウザ内だけに保存されます。</p>
+      </div>
+      <figure class="intro-visual"><img src="assets/iris.png" alt="星空の中で手を振って案内するアイリス" width="1736" height="900"><figcaption><span>案内役</span> アイリス</figcaption></figure>
     </section>
 
-    <div class="journey-grid">
-      <section class="quest-panel" aria-live="polite">
-        <div class="guide-row">
-          <div class="avatar" aria-label="案内役アイリス">
-            <span class="avatar-halo"></span>
-            <span class="avatar-face"><img src="assets/iris.png" alt=""></span>
-            <span class="avatar-spark">✦</span>
+    <section id="journeyArea" hidden>
+      <section class="progress-map" aria-label="クエストの進捗"><div class="progress-line"><span id="progressFill"></span></div><div id="mapNodes" class="map-nodes"></div></section>
+      <div id="questArea" class="journey-grid">
+        <section class="quest-panel" aria-live="polite">
+          <div class="stage-scene">
+            <div class="avatar" aria-label="案内役アイリス"><span class="avatar-halo"></span><span class="avatar-face"><img src="assets/iris.png" alt=""></span><span class="avatar-spark">✦</span></div>
+            <div class="speech"><p class="speaker">GUIDE / アイリス</p><p id="dialogue">ようこそ。今日は、あなたの頭の中にある景色を一緒に見つけよう。</p></div>
           </div>
-          <div class="speech">
-            <p class="speaker">案内役 アイリス</p>
-            <p id="dialogue">ようこそ。今日は、あなたの頭の中にある景色を一緒に見つけよう。</p>
+          <div id="questCard" class="quest-card">
+            <div class="quest-meta"><span id="questNumber" class="quest-number">QUEST 1 / 5</span><span id="timeEstimate" class="time-estimate">約5分</span></div>
+            <div class="enemy-hud" aria-label="今回乗り越えるもの"><div class="enemy-copy"><span>ENEMY</span><strong id="enemy">ぼんやりの霧</strong></div><div class="enemy-meter"><span id="enemyMeter"></span></div></div>
+            <figure class="quest-visual"><img id="questImage" src="assets/quest-1-origin.webp" alt="魔法の本から主人公の可能性が生まれる幻想的な場面" width="1200" height="800"><div id="enemyActor" class="enemy-actor" aria-label="敵：ぼんやりの霧"><span class="enemy-aura"></span><img id="enemyImage" src="assets/enemy-fog.webp" alt="黒紫の霧でできた小さな敵"><span class="enemy-shadow"></span></div><figcaption><span id="questImageNumber">CHAPTER 01</span><strong id="questImageCaption">まだ名前のない物語</strong></figcaption></figure>
+            <h1 id="questTitle">主人公の核を見つける</h1><p id="questPrompt" class="quest-prompt"></p>
+            <div id="suggestionArea" class="suggestion-area" hidden><div class="suggestion-heading"><span>アイリスから3つの候補</span><span id="suggestionRound">1 / 4</span></div><div id="suggestions" class="suggestions" aria-label="迷ったときの候補"></div></div>
+            <label class="answer-label" for="answerInput">あなたが拾った言葉</label><textarea id="answerInput" rows="4" maxlength="240" placeholder="思いついた言葉を、そのまま置いてみよう"></textarea>
+            <div class="input-meta"><p id="inputHint" class="input-hint" aria-live="polite"></p><span id="characterCount">0 / 240</span></div>
+            <div class="actions"><button id="backButton" class="button button-ghost" type="button">← 戻る</button><button id="hintButton" class="button button-soft" type="button">迷ったら候補を見る</button><button id="nextButton" class="button button-primary" type="button">この言葉で進む <span>→</span></button></div>
           </div>
-        </div>
-
-        <div class="quest-card">
-          <div class="quest-meta">
-            <span id="questNumber" class="quest-number">QUEST 1</span>
-            <span id="timeEstimate" class="time-estimate">約5分</span>
-          </div>
-          <p id="enemy" class="enemy">ENEMY：ぼんやりの霧</p>
-          <h2 id="questTitle">主人公の核を見つける</h2>
-          <p id="questPrompt" class="quest-prompt"></p>
-
-          <div id="suggestions" class="suggestions" aria-label="迷ったときの候補"></div>
-          <label class="answer-label" for="answerInput">あなたの答え</label>
-          <textarea id="answerInput" rows="4" placeholder="思いついた言葉を、そのまま置いてみよう"></textarea>
-          <p id="inputHint" class="input-hint"></p>
-
-          <div class="actions">
-            <button id="backButton" class="button button-ghost" type="button">戻る</button>
-            <button id="hintButton" class="button button-soft" type="button">迷った</button>
-            <button id="nextButton" class="button button-primary" type="button">これで進む <span>→</span></button>
-          </div>
-        </div>
-      </section>
-
-      <aside class="inventory-panel">
-        <div class="inventory-heading">
-          <div>
-            <p class="eyebrow">YOUR CREATIVE KIT</p>
-            <h2>旅の装備</h2>
-          </div>
-          <span class="save-status">自動保存</span>
-        </div>
-        <p class="inventory-lead">選んだ言葉が、作品の材料としてここに集まります。</p>
-        <div id="inventory" class="inventory-list"></div>
-        <button id="resetButton" class="reset-button" type="button">はじめからやり直す</button>
-      </aside>
-    </div>
-
-    <section id="finalPanel" class="final-panel" hidden>
-      <figure class="final-visual">
-        <img src="assets/iris.png" alt="星空の中で手を振る案内役アイリス">
-        <figcaption>「ここまで来たね。あなたの世界を、見せて。」</figcaption>
-      </figure>
-      <div class="final-badge">QUEST COMPLETE</div>
-      <p class="eyebrow">YOUR WORLD IS READY</p>
-      <h2>あなたの世界が、ひとつの生成文になりました。</h2>
-      <p>このまま画像生成AIに貼り付けても、好きな言葉へ書き換えても大丈夫。作品を決めるのは、最後まであなたです。</p>
-      <div class="prompt-box">
-        <p id="finalPrompt"></p>
-        <button id="copyButton" class="button button-primary" type="button">生成文をコピー</button>
+        </section>
+        <aside class="inventory-panel">
+          <div class="inventory-heading"><div><p class="eyebrow">YOUR CREATIVE KIT</p><h2>旅の装備</h2></div><span id="saveStatus" class="save-status"><span></span>自動保存</span></div>
+          <p class="inventory-lead">選んだ言葉が、作品の材料としてここに集まります。</p><div id="inventory" class="inventory-list"></div>
+          <div class="inventory-footer"><p>ここまでの答えは、この端末に保存されています。</p><button id="resetButton" class="reset-button" type="button">はじめからやり直す</button></div>
+        </aside>
       </div>
-      <div class="final-actions">
-        <button id="editButton" class="button button-ghost" type="button">クエストを見直す</button>
-        <button id="newJourneyButton" class="button button-soft" type="button">別の世界をつくる</button>
-      </div>
+    </section>
+
+    <section id="finalPanel" class="final-panel" hidden aria-labelledby="finalTitle">
+      <figure class="final-visual"><img src="assets/iris.png" alt="星空の中で手を振る案内役アイリス" width="1736" height="900"><figcaption>「ここまで来たね。あなたの世界を、見せて。」</figcaption></figure>
+      <div class="final-badge">QUEST COMPLETE</div><p class="eyebrow">YOUR WORLD IS READY</p><h1 id="finalTitle">あなたの世界が、<br>ひとつの生成文になりました。</h1>
+      <p class="final-lead">このまま画像生成AIに貼り付けても、好きな言葉へ書き換えても大丈夫。作品を決めるのは、最後まであなたです。</p>
+      <div class="prompt-box"><p id="finalPrompt"></p><div class="prompt-actions"><button id="copyButton" class="button button-primary" type="button">生成文をコピー</button><button id="downloadButton" class="button button-soft" type="button">テキストで保存</button></div></div>
+      <section class="journey-gallery" aria-labelledby="galleryTitle"><p class="eyebrow">THE FIVE FRAGMENTS</p><h2 id="galleryTitle">旅で集めた、5つの景色。</h2><div class="gallery-grid">
+        <figure><img src="assets/quest-1-origin.webp" alt="魔法の本から主人公の可能性が生まれる場面" loading="lazy"><figcaption>主人公の種</figcaption></figure>
+        <figure><img src="assets/quest-2-emotion.webp" alt="二つの手が光る心を包む場面" loading="lazy"><figcaption>心のしずく</figcaption></figure>
+        <figure><img src="assets/quest-3-moment.webp" alt="夜明け前の駅に不思議な手紙が現れる場面" loading="lazy"><figcaption>物語の欠片</figcaption></figure>
+        <figure><img src="assets/quest-4-directing.webp" alt="構図と光を決める魔法の演出台" loading="lazy"><figcaption>演出の羅針盤</figcaption></figure>
+        <figure><img src="assets/quest-5-world.webp" alt="完成した幻想世界が額縁に現れる場面" loading="lazy"><figcaption>世界の光</figcaption></figure>
+      </div></section>
+      <section class="next-steps" aria-labelledby="nextStepTitle"><p class="eyebrow">NEXT STEP</p><h2 id="nextStepTitle">次に変えたい場所から、続きを選べます。</h2><div class="resource-grid">
+        <a href="https://note.com/real_hyena9474/n/nd956a7c67440" target="_blank" rel="noreferrer"><small>構図を変えたい</small><strong>マンネリを抜ける構図の実例</strong><span>記事を読む →</span></a>
+        <a href="https://note.com/real_hyena9474/n/n1c3bbead0f2c" target="_blank" rel="noreferrer"><small>悩みを整理したい</small><strong>マンネリ3タイプ診断</strong><span>診断を見る →</span></a>
+        <a href="https://picoli.site/EwBtCN" target="_blank" rel="noreferrer"><small>画風を探したい</small><strong>AIイラスト画風30種一覧</strong><span>一覧を見る →</span></a>
+      </div></section>
+      <div class="final-actions"><button id="editButton" class="button button-ghost" type="button">答えを見直す</button><button id="newJourneyButton" class="button button-soft" type="button">別の世界をつくる</button><a class="button button-home" href="https://irisaiworld.web.fc2.com/">アイリスのHPへ戻る</a></div>
     </section>
   </main>
-  <script src="app.js"></script>
+  <div id="achievementToast" class="achievement-toast" role="status" aria-live="polite" hidden><span>✦</span><div><small>ITEM GET</small><strong id="achievementText"></strong></div></div>
+  <script src="app.js?v=20260925"></script>
 </body>
 </html>

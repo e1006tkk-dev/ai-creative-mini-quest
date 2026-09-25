@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI創作ミニクエスト｜アイリスと30分の冒険</title>
+  <meta name="description" content="案内役のアイリスと5つのクエストを進め、頭の中の世界を1枚の絵にする創作体験。">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2308071a'/%3E%3Cpath d='M32 8l5.8 18.2L56 32l-18.2 5.8L32 56l-5.8-18.2L8 32l18.2-5.8z' fill='%23d58cff'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23ffd096'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">✦</span>
+        <div>
+          <p class="eyebrow">30 MIN CREATIVE JOURNEY</p>
+          <h1>AI創作ミニクエスト</h1>
+        </div>
+      </div>
+      <div class="progress-copy"><strong id="progressCount">0 / 5</strong><span>クエスト</span></div>
+    </header>
+
+    <section class="progress-map" aria-label="クエストの進捗">
+      <div class="progress-line"><span id="progressFill"></span></div>
+      <div id="mapNodes" class="map-nodes"></div>
+    </section>
+
+    <div class="journey-grid">
+      <section class="quest-panel" aria-live="polite">
+        <div class="guide-row">
+          <div class="avatar" aria-label="案内役アイリス">
+            <span class="avatar-halo"></span>
+            <span class="avatar-face"><img src="assets/iris.png" alt=""></span>
+            <span class="avatar-spark">✦</span>
+          </div>
+          <div class="speech">
+            <p class="speaker">案内役 アイリス</p>
+            <p id="dialogue">ようこそ。今日は、あなたの頭の中にある景色を一緒に見つけよう。</p>
+          </div>
+        </div>
+
+        <div class="quest-card">
+          <div class="quest-meta">
+            <span id="questNumber" class="quest-number">QUEST 1</span>
+            <span id="timeEstimate" class="time-estimate">約5分</span>
+          </div>
+          <p id="enemy" class="enemy">ENEMY：ぼんやりの霧</p>
+          <h2 id="questTitle">主人公の核を見つける</h2>
+          <p id="questPrompt" class="quest-prompt"></p>
+
+          <div id="suggestions" class="suggestions" aria-label="迷ったときの候補"></div>
+          <label class="answer-label" for="answerInput">あなたの答え</label>
+          <textarea id="answerInput" rows="4" placeholder="思いついた言葉を、そのまま置いてみよう"></textarea>
+          <p id="inputHint" class="input-hint"></p>
+
+          <div class="actions">
+            <button id="backButton" class="button button-ghost" type="button">戻る</button>
+            <button id="hintButton" class="button button-soft" type="button">迷った</button>
+            <button id="nextButton" class="button button-primary" type="button">これで進む <span>→</span></button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="inventory-panel">
+        <div class="inventory-heading">
+          <div>
+            <p class="eyebrow">YOUR CREATIVE KIT</p>
+            <h2>旅の装備</h2>
+          </div>
+          <span class="save-status">自動保存</span>
+        </div>
+        <p class="inventory-lead">選んだ言葉が、作品の材料としてここに集まります。</p>
+        <div id="inventory" class="inventory-list"></div>
+        <button id="resetButton" class="reset-button" type="button">はじめからやり直す</button>
+      </aside>
+    </div>
+
+    <section id="finalPanel" class="final-panel" hidden>
+      <figure class="final-visual">
+        <img src="assets/iris.png" alt="星空の中で手を振る案内役アイリス">
+        <figcaption>「ここまで来たね。あなたの世界を、見せて。」</figcaption>
+      </figure>
+      <div class="final-badge">QUEST COMPLETE</div>
+      <p class="eyebrow">YOUR WORLD IS READY</p>
+      <h2>あなたの世界が、ひとつの生成文になりました。</h2>
+      <p>このまま画像生成AIに貼り付けても、好きな言葉へ書き換えても大丈夫。作品を決めるのは、最後まであなたです。</p>
+      <div class="prompt-box">
+        <p id="finalPrompt"></p>
+        <button id="copyButton" class="button button-primary" type="button">生成文をコピー</button>
+      </div>
+      <div class="final-actions">
+        <button id="editButton" class="button button-ghost" type="button">クエストを見直す</button>
+        <button id="newJourneyButton" class="button button-soft" type="button">別の世界をつくる</button>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260925c">
+  <link rel="stylesheet" href="styles.css?v=20260926">
 </head>
 <body>
   <a class="skip-link" href="#questArea">クエストへ移動</a>
@@ -28,8 +28,14 @@
       <div class="intro-copy">
         <p class="eyebrow">30 MIN CREATIVE JOURNEY</p>
         <h1 id="introTitle">頭の中の世界を、<br><em>最初の1枚</em>へ。</h1>
-        <p class="intro-lead">5つの問いに答えると、画像生成AIへそのまま渡せる「あなたの生成文」が完成します。正解はありません。アイリスと一緒に、好きな言葉を拾っていきましょう。</p>
-        <ul class="intro-points" aria-label="この体験の特徴"><li><span>01</span>無料・登録不要</li><li><span>02</span>迷ったら候補から選べる</li><li><span>03</span>答えはこの端末に自動保存</li></ul>
+        <p class="intro-lead">5つの短い問いに、一言ずつ答えてください。答えを組み合わせると、画像生成AIへそのまま貼れる「1本の生成文」が完成します。</p>
+        <div class="outcome-flow" aria-label="この体験で完成するもの"><span>5つの短い答え</span><b>→</b><span>1本の生成文</span><b>→</b><span>画像生成AIへ</span></div>
+        <section class="outcome-preview" aria-labelledby="outcomePreviewTitle">
+          <div><span>完成例</span><small>時計修理の少女の場合</small></div>
+          <p id="outcomePreviewTitle">古い時計を直す、失敗を恐れている少女。夜明け前の工房で時計が再び動き出す瞬間。少し見下ろす構図、窓から青い朝の光、机に母の手紙。くすんだ青紫と金、古い絵本のような質感。</p>
+          <small>文章を添削するものではありません。あなたが選んだ5つの材料を、この形にまとめます。</small>
+        </section>
+        <ul class="intro-points" aria-label="この体験の特徴"><li><span>01</span>一言だけでも、候補を選ぶだけでもOK</li><li><span>02</span>正解や文章力は不要</li><li><span>03</span>答えはこの端末に自動保存</li></ul>
         <div class="intro-actions"><button id="startButton" class="button button-primary button-large" type="button">アイリスと旅を始める <span>→</span></button><div id="savedJourneyActions" class="saved-journey-actions" hidden><p><strong>前回の続きが保存されています</strong><span>別の人が体験する場合は、最初から始めてください。</span></p><div><button id="resumeButton" class="button button-primary button-large" type="button">続きから再開する <span>→</span></button><button id="introResetButton" class="button button-reset button-large" type="button"><span>↺</span> 保存データを消して最初から</button></div></div></div>
         <p class="privacy-note">入力した内容は外部へ送信されません。このブラウザ内だけに保存されます。</p>
       </div>
@@ -50,9 +56,9 @@
             <figure class="quest-visual"><img id="questImage" src="assets/quest-1-origin.webp" alt="魔法の本から主人公の可能性が生まれる幻想的な場面" width="1200" height="800"><div id="enemyActor" class="enemy-actor" aria-label="敵：ぼんやりの霧"><span class="enemy-aura"></span><img id="enemyImage" src="assets/enemy-fog.webp" alt="黒紫の霧でできた小さな敵"><span class="enemy-shadow"></span></div><figcaption><span id="questImageNumber">CHAPTER 01</span><strong id="questImageCaption">まだ名前のない物語</strong></figcaption></figure>
             <h1 id="questTitle">主人公の核を見つける</h1><p id="questPrompt" class="quest-prompt"></p>
             <div id="suggestionArea" class="suggestion-area" hidden><div class="suggestion-heading"><span>アイリスから3つの候補</span><span id="suggestionRound">1 / 4</span></div><div id="suggestions" class="suggestions" aria-label="迷ったときの候補"></div></div>
-            <label class="answer-label" for="answerInput">あなたが拾った言葉</label><textarea id="answerInput" rows="4" maxlength="240" placeholder="思いついた言葉を、そのまま置いてみよう"></textarea>
+            <label class="answer-label" for="answerInput"><span>あなたが拾った言葉</span><small>一言でOK。思いつかなければ、3つの候補からそのまま選べます。</small></label><textarea id="answerInput" rows="4" maxlength="240" placeholder="思いついた言葉を、そのまま置いてみよう"></textarea>
             <div class="input-meta"><p id="inputHint" class="input-hint" aria-live="polite"></p><span id="characterCount">0 / 240</span></div>
-            <div class="actions"><button id="backButton" class="button button-ghost" type="button">← 戻る</button><button id="hintButton" class="button button-soft" type="button">迷ったら候補を見る</button><button id="nextButton" class="button button-primary" type="button">この言葉で進む <span>→</span></button></div>
+            <div class="actions"><button id="backButton" class="button button-ghost" type="button">← 戻る</button><button id="hintButton" class="button button-soft" type="button">3つの候補から選ぶ</button><button id="nextButton" class="button button-primary" type="button">この言葉で進む <span>→</span></button></div>
           </div>
         </section>
         <aside class="inventory-panel">
@@ -90,6 +96,6 @@
     </section>
   </main>
   <div id="achievementToast" class="achievement-toast" role="status" aria-live="polite" hidden><span>✦</span><div><small>ITEM GET</small><strong id="achievementText"></strong></div></div>
-  <script src="app.js?v=20260925"></script>
+  <script src="app.js?v=20260926"></script>
 </body>
 </html>

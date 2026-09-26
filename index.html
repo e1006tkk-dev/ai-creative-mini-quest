@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260926">
+  <link rel="stylesheet" href="styles.css?v=20260926c">
 </head>
 <body>
   <a class="skip-link" href="#questArea">クエストへ移動</a>
@@ -55,10 +55,11 @@
             <div class="enemy-hud" aria-label="今回乗り越えるもの"><div class="enemy-copy"><span>ENEMY</span><strong id="enemy">ぼんやりの霧</strong></div><div class="enemy-meter"><span id="enemyMeter"></span></div></div>
             <figure class="quest-visual"><img id="questImage" src="assets/quest-1-origin.webp" alt="魔法の本から主人公の可能性が生まれる幻想的な場面" width="1200" height="800"><div id="enemyActor" class="enemy-actor" aria-label="敵：ぼんやりの霧"><span class="enemy-aura"></span><img id="enemyImage" src="assets/enemy-fog.webp" alt="黒紫の霧でできた小さな敵"><span class="enemy-shadow"></span></div><figcaption><span id="questImageNumber">CHAPTER 01</span><strong id="questImageCaption">まだ名前のない物語</strong></figcaption></figure>
             <h1 id="questTitle">主人公の核を見つける</h1><p id="questPrompt" class="quest-prompt"></p>
-            <div id="suggestionArea" class="suggestion-area" hidden><div class="suggestion-heading"><span>アイリスから3つの候補</span><span id="suggestionRound">1 / 4</span></div><div id="suggestions" class="suggestions" aria-label="迷ったときの候補"></div></div>
-            <label class="answer-label" for="answerInput"><span>あなたが拾った言葉</span><small>一言でOK。思いつかなければ、3つの候補からそのまま選べます。</small></label><textarea id="answerInput" rows="4" maxlength="240" placeholder="思いついた言葉を、そのまま置いてみよう"></textarea>
+            <div id="suggestionArea" class="suggestion-area"><div class="suggestion-heading"><span>近いものを、そのまま選んでOK</span><span id="suggestionRound">1 / 4</span></div><div id="suggestions" class="suggestions" aria-label="アイリスからの候補"></div><div class="suggestion-tools"><button id="hintButton" class="suggestion-tool" type="button">別の3候補を見る</button><button id="autoChoiceButton" class="suggestion-tool suggestion-auto" type="button">✦ よく分からないので、アイリスにおまかせ</button></div></div>
+            <div id="irisInsight" class="iris-insight" hidden><span>✦</span><div><small>アイリスの見立て</small><p id="irisInsightText"></p></div></div>
+            <label class="answer-label" for="answerInput"><span>選んだ言葉</span><small>候補を選ぶだけでOK。自分の言葉にしたいときは、ここで自由に書き換えられます。</small></label><textarea id="answerInput" rows="4" maxlength="240" placeholder="候補を選ぶか、思いついた言葉を置いてみよう"></textarea>
             <div class="input-meta"><p id="inputHint" class="input-hint" aria-live="polite"></p><span id="characterCount">0 / 240</span></div>
-            <div class="actions"><button id="backButton" class="button button-ghost" type="button">← 戻る</button><button id="hintButton" class="button button-soft" type="button">3つの候補から選ぶ</button><button id="nextButton" class="button button-primary" type="button">この言葉で進む <span>→</span></button></div>
+            <div class="actions"><button id="backButton" class="button button-ghost" type="button">← 戻る</button><button id="nextButton" class="button button-primary" type="button">この言葉で進む <span>→</span></button></div>
           </div>
         </section>
         <aside class="inventory-panel">
@@ -73,6 +74,7 @@
       <figure class="final-visual"><img src="assets/iris.png" alt="星空の中で手を振る案内役アイリス" width="1736" height="900"><figcaption>「ここまで来たね。あなたの世界を、見せて。」</figcaption></figure>
       <div class="final-badge">QUEST COMPLETE</div><p class="eyebrow">YOUR WORLD IS READY</p><h1 id="finalTitle">あなたの世界が、<br>ひとつの生成文になりました。</h1>
       <p class="final-lead">このまま画像生成AIに貼り付けても、好きな言葉へ書き換えても大丈夫。作品を決めるのは、最後まであなたです。</p>
+      <section class="worldview-summary" aria-labelledby="worldviewSummaryTitle"><p class="eyebrow">IRIS VIEW</p><h2 id="worldviewSummaryTitle">アイリスから見た、あなたの世界観。</h2><p class="worldview-summary-lead">5つの答えを外側から見ると、こんな物語の軸が見えてきました。</p><div class="worldview-summary-grid"><article><small>物語の核</small><strong id="worldCore"></strong></article><article><small>世界の印象</small><strong id="worldMood"></strong></article><article><small>大切にしているもの</small><strong id="worldFocus"></strong></article></div></section>
       <div class="prompt-box"><p id="finalPrompt"></p><div class="prompt-actions"><button id="copyButton" class="button button-primary" type="button">生成文をコピー</button><button id="downloadButton" class="button button-soft" type="button">テキストで保存</button></div></div>
       <section class="journey-gallery" aria-labelledby="galleryTitle"><p class="eyebrow">THE FIVE FRAGMENTS</p><h2 id="galleryTitle">旅で集めた、5つの景色。</h2><div class="gallery-grid">
         <figure><img src="assets/quest-1-origin.webp" alt="魔法の本から主人公の可能性が生まれる場面" loading="lazy"><figcaption>主人公の種</figcaption></figure>
@@ -96,6 +98,6 @@
     </section>
   </main>
   <div id="achievementToast" class="achievement-toast" role="status" aria-live="polite" hidden><span>✦</span><div><small>ITEM GET</small><strong id="achievementText"></strong></div></div>
-  <script src="app.js?v=20260926b"></script>
+  <script src="app.js?v=20260926c"></script>
 </body>
 </html>

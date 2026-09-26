@@ -43,3 +43,29 @@ a{color:inherit}.skip-link{position:fixed;left:16px;top:-80px;z-index:1000;paddi
 .hp-sub-link{color:#b9aec8;font-size:.75rem;text-underline-offset:4px}
 .hp-sub-link:hover{color:var(--ink)}
 @media(max-width:560px){.line-consult-actions{display:grid;gap:14px}.line-consult-actions .button{width:100%}}
+
+/* Objective guidance: choices stay visible and Iris explains what each answer adds. */
+.suggestion-area{margin:0 0 18px;padding:15px;border:1px solid rgba(198,140,244,.22);border-radius:17px;background:linear-gradient(135deg,rgba(105,56,144,.1),rgba(243,188,125,.035))}
+.suggestion-heading{margin-bottom:10px;color:#d5c7df}
+.suggestion-heading span:first-child{font-weight:700}
+.suggestion-tools{display:flex;align-items:center;justify-content:space-between;gap:9px;margin-top:11px}
+.suggestion-tool{min-height:38px;padding:7px 12px;border:1px solid var(--line);border-radius:99px;color:#cdbed8;background:rgba(4,4,15,.38);font:700 .68rem "Noto Sans JP",sans-serif;cursor:pointer;transition:.2s ease}
+.suggestion-tool:hover{transform:translateY(-1px);border-color:var(--violet);color:#fff}
+.suggestion-tool:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.suggestion-auto{border-color:rgba(243,188,125,.34);color:#ffe1bb;background:rgba(142,85,31,.16)}
+.iris-insight{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center;margin:0 0 16px;padding:13px 15px;border:1px solid rgba(142,217,178,.25);border-radius:15px;background:linear-gradient(135deg,rgba(55,132,88,.13),rgba(77,38,111,.18))}
+.iris-insight[hidden]{display:none}
+.iris-insight>span{display:grid;width:42px;height:42px;place-items:center;border:1px solid rgba(142,217,178,.32);border-radius:50%;color:var(--mint);background:rgba(6,25,15,.35);font-size:1.15rem}
+.iris-insight small{display:block;margin-bottom:3px;color:var(--mint);font-size:.6rem;font-weight:700;letter-spacing:.1em}
+.iris-insight p{margin:0;color:#ded5e5;font-size:.76rem;line-height:1.7}
+.actions{justify-content:space-between}
+textarea{min-height:98px}
+.worldview-summary{max-width:900px;margin:30px auto 0;padding:26px;border:1px solid rgba(198,140,244,.27);border-radius:20px;background:linear-gradient(135deg,rgba(91,45,129,.22),rgba(12,8,27,.55));text-align:left}
+.worldview-summary h2{margin:4px 0 8px;font-size:clamp(1.3rem,2.5vw,1.9rem)}
+.worldview-summary>p:not(.eyebrow){margin:0;color:var(--muted);font-size:.78rem;line-height:1.7}
+.worldview-summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.worldview-summary-grid>article{padding:16px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025)}
+.worldview-summary-grid small{display:block;margin-bottom:8px;color:var(--violet);font-size:.64rem;font-weight:700;letter-spacing:.08em}
+.worldview-summary-grid strong{display:block;color:#eee4f4;font-size:.78rem;font-weight:500;line-height:1.75}
+@media(max-width:860px){.worldview-summary-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.suggestion-tools{display:grid}.suggestion-tool{text-align:left}.worldview-summary{padding:18px}}
